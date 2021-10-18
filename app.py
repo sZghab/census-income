@@ -32,6 +32,5 @@ def predict():
     # return data
     return jsonify(results=output)
 
-
-if __name__ == '__main__':
-    app.run(threaded=True, port=5000)
+if __name__ == "__main__":
+    app.run(threaded=True, port=5000, url_scheme='https')
