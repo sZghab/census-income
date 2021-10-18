@@ -3,14 +3,18 @@ from flask import Flask, jsonify, request
 import pickle
 
 # load model
-model = pickle.load(open('final_prediction.pickle','rb'))
+model = pickle.load(open('final_prediction.pickle', 'rb'))
 
 # app
 app = Flask(__name__)
 
-# routes
-@app.route('/', methods=['POST'])
+# A welcome message to test our server
+@app.route('/')
+def index():
+    return "<h1>Welcome to our server !!</h1>"
 
+# routes
+@app.route('/post/', methods=['POST'])
 def predict():
     # get data
     data = request.get_json(force=True)
@@ -28,5 +32,6 @@ def predict():
     # return data
     return jsonify(results=output)
 
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(threaded=True, port=5000)
