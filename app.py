@@ -3,8 +3,9 @@ from flask import Flask, jsonify, request
 import pickle
 
 # load model
+print('to load')
 model = pickle.load(open('final_prediction.pickle', 'rb'))
-
+print('loaded')
 # app
 app = Flask(__name__)
 
@@ -33,4 +34,4 @@ def predict():
     return jsonify(results=output)
 
 if __name__ == "__main__":
-    app.run(url_scheme='https')
+    app.run(threaded=True, port=5000)
