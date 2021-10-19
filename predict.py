@@ -162,8 +162,10 @@ def main():
 
                 mailinfo.pop('send', None)
                 log(json.loads(json.dumps(mailinfo), object_hook=_decode), "blue")
+                input("Press Enter to continue...")
                 r = requests.post(url, json=json.loads(json.dumps(mailinfo), object_hook=_decode))
                 print(r, r.text)
+                input("Press Enter to continue...")
                 log(r.text["results"]["results"], "blue")
             except Exception as e:
                 raise Exception("An error occured: %s" % (e))
