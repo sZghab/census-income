@@ -153,8 +153,7 @@ def main():
     """
     log("Census API", color="blue", figlet=True)
     log("Predict income via our API. Please fill in the parameters of your request.", "green")
-    test = True
-    while test :
+    while True:
         mailinfo = askRequestInformation()
         if mailinfo.get("send", False):
             try:
